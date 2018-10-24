@@ -13,9 +13,9 @@
 
 Route::get('/', 'IndexController@showIndex');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user','UserController@index')->name('user');
 
-Auth::routes();
+Route::post('/user/edit','UserController@edit')->name('edit');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/user/destroy','UserController@destroy')->name('destroy');
