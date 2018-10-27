@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Freeads') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -58,7 +58,9 @@
                                
                                     <a href="{{ route('home') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
                                     
-                                    <a href="{{ route('user') }}" class="dropdown-item">{{ __('Edit') }}</a>
+                                    <a href="{{ route('user') }}" class="dropdown-item">{{ __('Edit Profil') }}</a>
+
+                                    <a href="{{ route('annonce') }}" class="dropdown-item">{{ __('Poster une annonce') }}</a>
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

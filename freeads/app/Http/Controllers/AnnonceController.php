@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Annonce;
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 
-
-class UserController extends Controller
+class AnnonceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user');
-    
+        return view('annonce');
     }
 
     /**
@@ -39,8 +36,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        return Annonce::create(['title' => $request->title,
+        'description' => $request->description, 
+        'price' => $request->price, 
+        'image' => 'test']);
+            return "annonce créé !";
+        
     }
 
     /**
@@ -49,9 +51,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $displays = Annonce::all();
+
+        return view('home', compact('displays', $displays));
     }
 
     /**
@@ -60,15 +64,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        /*  $user = User::find(Auth::user()->id);
-       // print_r($user); 
-       */ 
-        $displays = User::all();
-
-        return view('edit', compact('displays', $displays)); 
-
+        //
     }
 
     /**
@@ -78,12 +76,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {   
-        $user = User::find(Auth::user()->id);
-        $user->update($request->all());
-
-        return redirect()->route('user');
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
@@ -92,14 +87,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
-    {      
-        $user = User::find(Auth::user()->id);   
-        Auth::logout();
-
-        if($user->delete())
-        {
-            return redirect()->route('home');
-        }
+    public function destroy($id)
+    {
+        //
     }
 }

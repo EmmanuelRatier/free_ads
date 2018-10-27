@@ -81,21 +81,26 @@
                 <div class="title m-b-md">
                     Edit Profil
                 </div>
+                @foreach($displays as $display)
 
+                <h1>{{ $display->name }}</h1>
+
+                @endforeach
                 <div class="links">
-                   <form action="">
+                   <form action=" {{ action('UserController@update') }}" method="post">
+                        @csrf
                         <div class="form-group">
                         <strong>name</strong>
-                        <input type="text" class="form-control"> <br>
+                        <input type="text" class="form-control" value="{{ Auth::user()->name }}" name="name"> <br>
 
                         <strong>email</strong>
-                        <input type="text" class="form-control"> <br>
+                        <input type="email" class="form-control" value="{{ Auth::user()->email }}" name="email"> <br>
 
                         <strong>password</strong>
-                        <input type="text" class="form-control"> <br>
+                        <input type="password" class="form-control" value="password secret"> <br>
 
                          <strong>confirm password</strong>
-                        <input type="text" class="form-control">
+                        <input type="password" class="form-control" value="password secret">
                         <br>
                         <button type="submit" class="btn btn-light">Update</button>
                         </div>
