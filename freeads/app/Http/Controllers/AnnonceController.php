@@ -34,14 +34,23 @@ class AnnonceController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * 
      */
+    /* if($request->hasFile('image')) {
+
+        $returnImage = $request->image->getClientOriginalName();
+       return  $returnImage = $request->image->store('public');
+    }
+    $post ->image = $returnImage; */
+    
     public function store(Request $request)
     {   
-        return Annonce::create(['title' => $request->title,
+         Annonce::create(['title' => $request->title,
         'description' => $request->description, 
         'price' => $request->price, 
         'image' => 'test']);
-            return "annonce créé !";
+            return redirect()->route('viewAnnonce');
         
     }
 
@@ -55,7 +64,7 @@ class AnnonceController extends Controller
     {
         $displays = Annonce::all();
 
-        return view('home', compact('displays', $displays));
+        return view('viewAnnonce', compact('displays', $displays));
     }
 
     /**

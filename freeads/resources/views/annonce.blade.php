@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Votre annonce</div>
                 <div class="card-body">
-                    <form action=" {{ action('AnnonceController@store') }}" method="post">
+                    <form action=" {{ action('AnnonceController@store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                             <strong>Tilte</strong>
@@ -17,7 +17,7 @@
                             <input type="text" class="form-control" placeholder="exemple: bien entretenu, année 1998 diesel" value="" name="description"> <br>
 
                             <strong>Image</strong>
-                            <input type="file" name="image" value="">
+                            <input type="file" name="image" id="image">
                            <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                             <br>
                             <br>

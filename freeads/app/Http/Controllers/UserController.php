@@ -99,7 +99,7 @@ class UserController extends Controller
 
         if($user->delete())
         {
-            return redirect()->route('home');
+            return redirect()->route('index');
         }
     }
 }

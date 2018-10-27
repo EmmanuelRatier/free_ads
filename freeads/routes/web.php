@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/user','UserController@index')->name('user');
 Route::get('/annonce', 'AnnonceController@index')->name('annonce');
-Route::get('/home', 'AnnonceController@show')->name('home');
+Route::get('/viewAnnonce', 'AnnonceController@show')->name('viewAnnonce');
 
 
 Route::post('/annonce', 'AnnonceController@store')->name('annonce');
